@@ -1,0 +1,136 @@
+.profile-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  .profile-header {
+    text-align: center;
+    margin-bottom: 2rem;
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 1rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .avatar-text {
+        color: white;
+        font-size: 2.5rem;
+        font-weight: bold;
+      }
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: #2d3748;
+    }
+
+    .email {
+      color: #718096;
+      font-size: 1rem;
+    }
+  }
+
+  .profile-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: #f7fafc;
+    border-radius: 8px;
+
+    .stat-item {
+      text-align: center;
+
+      .stat-value {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #2d3748;
+      }
+
+      .stat-label {
+        color: #718096;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .profile-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+
+    .info-section {
+      h3 {
+        color: #2d3748;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #e2e8f0;
+      }
+
+      .info-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #edf2f7;
+
+        .info-label {
+          color: #718096;
+        }
+
+        .info-value {
+          color: #2d3748;
+          font-weight: 500;
+
+          &.status-active {
+            color: #48bb78;
+          }
+        }
+      }
+    }
+  }
+
+  .profile-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+
+    button {
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &.edit-btn {
+        background: #4299e1;
+        color: white;
+        border: none;
+
+        &:hover {
+          background: #3182ce;
+        }
+      }
+
+      &.logout-btn {
+        background: white;
+        color: #e53e3e;
+        border: 1px solid #e53e3e;
+
+        &:hover {
+          background: #fff5f5;
+        }
+      }
+    }
+  }
+}
