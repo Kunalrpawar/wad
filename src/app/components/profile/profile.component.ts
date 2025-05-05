@@ -21,8 +21,8 @@ export class ProfileComponent implements OnInit {
     // For demo purposes, we'll create a mock user
     this.user = {
       id: '1',
-      name: 'Kunal Ramesh Pawar',
-      email: 'kunal.pawar@example.com',
+      name: 'demo name',
+      email: 'demo@example.com',
       createdAt: new Date('2024-01-01'),
       updatedAt: new Date()
     };

@@ -1,42 +1,47 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrls: ['./login.component.scss'],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, RouterModule]
 })
 export class LoginComponent {
-  email: string = '';
-  password: string = '';
+  loginForm: FormGroup;
   error: string = '';
-  isLoading: boolean = false;
+  isFirstTimeUser: boolean = true;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
 
   onSubmit() {
-    this.isLoading = true;
-    this.error = '';
-
-    try {
-      this.authService.login(this.email, this.password).subscribe({
+    if (this.loginForm.valid) {
+      const { email, password } = this.loginForm.value;
+      this.authService.login(email, password).subscribe({
         next: () => {
-          this.isLoading = false;
           this.router.navigate(['/profile']);
         },
-        error: (error) => {
-          this.isLoading = false;
-          this.error = error.message || 'Invalid email or password';
+        error: (err) => {
+          this.error = err.message || 'An error occurred during login';
         }
       });
-    } catch (error) {
-      this.isLoading = false;
-      this.error = 'An error occurred during login';
     }
+  }
+
+  navigateToRegister() {
+    this.router.navigate(['/register']);
   }
 }

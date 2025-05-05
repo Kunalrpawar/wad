@@ -4,10 +4,39 @@
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: white;
 
   h2 {
     text-align: center;
     margin-bottom: 1.5rem;
+  }
+
+  .first-time-message {
+    text-align: center;
+    padding: 1rem;
+    background: #e3f2fd;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+
+    p {
+      margin-bottom: 1rem;
+      color: #1976d2;
+    }
+
+    .register-btn {
+      background: #1976d2;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background: #1565c0;
+      }
+    }
   }
 
   .form-group {

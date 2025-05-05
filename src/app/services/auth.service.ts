@@ -24,6 +24,11 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
+  isFirstTimeUser(): boolean {
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    return users.length === 0;
+  }
+
   register(user: User): Observable<any> {
     // For demo purposes, we'll store the user in localStorage
     const newUser = {
@@ -38,6 +43,10 @@ export class AuthService {
       ...JSON.parse(localStorage.getItem('users') || '[]'),
       newUser
     ]));
+
+    // Also store as current user
+    localStorage.setItem('currentUser', JSON.stringify(newUser));
+    this.currentUserSubject.next(newUser);
 
     return of({ success: true });
   }
